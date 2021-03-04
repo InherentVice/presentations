@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/dist/theme/league.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="reveal.js/plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section
+            data-markdown
+            data-separator="^\n---\n$"
+            data-separator-vertical="^\n--\n$"
+          >
+            <textarea data-template>
+            ##  "Debounce es einfach..."
+              *_.debounce vs. _.throttle*
+          </textarea
+            >
+          </section>
+          <section>
+            <img data-src="./assets/imgs/debounce_inigo_montoya.jpg" alt="InigoMontoya-meme" />
+          </section>
+          <section>
+            <h4>Das Problem:</h4>
+            <iframe
+              height="400"
+              style="width: 100%;"
+              scrolling="no"
+              title="Scroll events counter"
+              src="https://codepen.io/dcorb/embed/PZOZgB?height=265&theme-id=dark&default-tab=result"
+              frameborder="no"
+              allowtransparency="true"
+              allowfullscreen="true"
+            >
+              See the Pen
+              <a href="https://codepen.io/dcorb/pen/PZOZgB"
+                >Scroll events counter</a
+              >
+              by Corbacho (<a href="https://codepen.io/dcorb">@dcorb</a>) on
+              <a href="https://codepen.io">CodePen</a>.
+            </iframe>
+          </section>
+          <section>
+            <h4>_.debounce</h4>
+            <p>
+              Funktion wird ausgefüht sobald ein Event für X Millisekunden nicht
+              mehr getriggert wurde.
+            </p>
+          </section>
+          <section>
+            <iframe
+              height="400"
+              style="width: 100%;"
+              scrolling="no"
+              title="Debounce. Trailing"
+              src="https://codepen.io/dcorb/embed/KVxGqN?height=265&theme-id=dark&default-tab=result"
+              frameborder="no"
+              allowtransparency="true"
+              allowfullscreen="true"
+            >
+              See the Pen
+              <a href="https://codepen.io/dcorb/pen/KVxGqN"
+                >Debounce. Trailing</a
+              >
+              by Corbacho (<a href="https://codepen.io/dcorb">@dcorb</a>) on
+              <a href="https://codepen.io">CodePen</a>.
+            </iframe>
+          </section>
+          <section>
+            <p>Funfact: Alternatives Verhalten</p>
+            <pre>
+            <code data-trim>
+              _.debounce(
+                myFunc,
+                300,
+                { 'leading': true, 'trailing': false}
+              )
+            </code>
+              </pre>
+            <p>Defaultwerte von _.debounce:</p>
+            <pre><code data-trim data-noescape>
+              Arguments
+              func (Function): The function to debounce.
+              [wait=0] (number): The number of milliseconds to delay.
+              [options={}] (Object): The options object.
+              [options.leading=false] (boolean): Specify invoking on the leading edge of the timeout.
+              [options.maxWait] (number): The maximum time func is allowed to be delayed before it's invoked.
+              [options.trailing=true] (boolean): Specify invoking on the trailing edge of the timeout.
+            </code>
+            </pre>
+          </section>
+          <section>
+            <iframe
+              height="400"
+              style="width: 100%;"
+              scrolling="no"
+              title="Debounce. Leading"
+              src="https://codepen.io/dcorb/embed/GZWqNV?height=265&theme-id=dark&default-tab=result"
+              frameborder="no"
+              allowtransparency="true"
+              allowfullscreen="true"
+            >
+              See the Pen
+              <a href="https://codepen.io/dcorb/pen/GZWqNV"
+                >Debounce. Leading</a
+              >
+              by Corbacho (<a href="https://codepen.io/dcorb">@dcorb</a>) on
+              <a href="https://codepen.io">CodePen</a>.
+            </iframe>
+          </section>
+          <section>
+            <h4>_.throttle</h4>
+            <p>
+              stellt sicher, dass ein Event nicht öfter als alle X Millisekunden
+              ausgeführt wird. Führt die Events aber aus, solange sie auftreten.
+            </p>
+          </section>
+          <section>
+            <p>Direkter Vergleich _.debounce vs. _.throttle:</p>
+            <iframe
+              height="400"
+              style="width: 100%;"
+              scrolling="no"
+              src="https://jsfiddle.net/mdosk7qp/3/embedded/result/"
+              frameborder="0"
+            ></iframe>
+          </section>
+          <section>
+            <p>Perfekter Anwendungsfall für '_.throttle'</p>
+            <iframe
+              height="400"
+              style="width: 100%;"
+              scrolling="no"
+              title="Infinite scrolling throttled"
+              src="https://codepen.io/dcorb/embed/eJLMxa?height=265&theme-id=dark&default-tab=result"
+              frameborder="no"
+              allowtransparency="true"
+              allowfullscreen="true"
+            >
+              See the Pen
+              <a href="https://codepen.io/dcorb/pen/eJLMxa"
+                >Infinite scrolling throttled</a
+              >
+              by Corbacho (<a href="https://codepen.io/dcorb">@dcorb</a>) on
+              <a href="https://codepen.io">CodePen</a>.
+            </iframe>
+          </section>
+          <section>
+            <p>Perfekter Anwendungsfall für '_.debounce'</p>
+            <div style="height: 400px; width: 100%; resize: both; overflow: auto;">
+              <iframe
+                style="width: 100%; height: 100%;"
+                scrolling="no"
+                title="Debounce Resize Event Example"
+                src="https://codepen.io/dcorb/embed/XXPjpd?height=307&theme-id=dark&default-tab=result"
+                frameborder="no"
+                allowtransparency="true"
+                allowfullscreen="true"
+              >
+                See the Pen
+                <a href="https://codepen.io/dcorb/pen/XXPjpd"
+                  >Debounce Resize Event Example</a
+                >
+                by Corbacho (<a href="https://codepen.io/dcorb">@dcorb</a>) on
+                <a href="https://codepen.io">CodePen</a>.
+              </iframe>
+            </div>
+          </section>
+          <section>
+            <h4>Fazit:</h4>
+            <ul>
+              <li>
+                'debounce' ist dafür da um eine Folge von Events abzufangen.
+                Blockert aber alle Events, bis die Eventfolge vorbei ist.
+              </li>
+              <li>
+                'throttle' ist geeignet, um häufig auftretende Events zu
+                drosseln. Es kann aber den Zustand des letzten Events
+                überspringen.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template>
+          ### Materialsammlung:
+            * https://codepen.io/dcorb/pen/PZOZgB
+            * https://css-tricks.com/debouncing-throttling-explained-examples/
+            * https://lodash.com/docs/4.17.15
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

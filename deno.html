@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Deno - DevJFX 1. Oct. 2020</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/dist/theme/league.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="reveal.js/plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <style type="text/css" media="screen">
+      .reveal pre {
+        box-shadow: none;
+      }
+      .reveal .controls {
+        color: #345;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section
+            data-markdown
+            data-separator="^\n---\n$"
+            data-separator-vertical="^\n--\n$"
+          >
+            <textarea data-template>
+              <small>Dev JFX, 1. Oct. 2020:</small>
+              <div style="display: flex; justify-content: center; align-items: center">
+                <img src="./assets/imgs/Deno.svg" width=300" height="300" />
+                <div style="display: flex; flex-direction: column;">
+                  <h3 style="margin-bottom:0;">First look at:</h3>
+                  <h1 style="margin-bottom:0;">Deno</h1>
+                </div>
+              </div>
+              <p>WTF?, WhyTF?, HowTF?,<br />Why should I care?</p>
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What is Deno?</h2>
+            <p>
+              In 2018, Ryan Dahl, the main developer behind Node.js, started to
+              think what he learned from it and how he would develop it now.
+            </p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>Promises:</h2>
+            <p>
+              Not sticking to promises hindered the standardization and delivery
+              of async/await.
+            </p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>Security:</h2>
+            <p>
+              V8 in itself is a secure sandbox that gets opened to let Node.js
+              do everything on the machine.
+            </p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>Build System:</h2>
+            <p>
+              GYP got abandoned by everyone but Node.js and has a horrible
+              developer experience.
+            </p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>package.json:</h2>
+            <ul>
+              <li>Boilerplate noise (license, repository).</li>
+              <li>Unnecessary abstraction.</li>
+              <li>Unnecessary big modules.</li>
+              <li>Complicated module resolution algorithm.</li>
+            </ul>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>npm, Inc:</h2>
+            <ul>
+              <li>Centralized, privately owned repository.</li>
+              <li>Belongs to GitHub, which belongs to Microsoft.</li>
+              <li>leftpad debacle.</li>
+            </ul>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>node_modules:</h2>
+            <p>Module resolution algorithm is unnecessary complex</p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>require():</h2>
+            <p>We have ES Modules now. (<em>"import ..."</em>)</p>
+            <p>
+              Without the file extension, the module loader needs to query the
+              file system at multiple locations trying to guess what the user
+              intended.
+            </p>
+          </section>
+          <section>
+            <small>How could Node.js be better?</small>
+            <h2>index.js</h2>
+            <p>
+              Needlessly complicated the module loading system
+            </p>
+            <p>Especially unnecessary after require supported package.json.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>How does it work in Deno?</h1>
+          </section>
+          <section>
+            <h2>Security</h2>
+            <p>Uses the Sandbox.</p>
+            <p>
+              No arbitrary native functions (except <em>send</em> &
+              <em>recv</em>)
+            </p>
+          </section>
+          <section>
+            <h2>Simple module system</h2>
+            <p>(relative or absolute URLs only)</p>
+            <pre>
+              <code data-trim data-noescape class="typescript">
+                import { Router } from "https://deno.land/x/oak@v6.0.1/mod.ts";
+                import { home } from "./routes.ts";
+              </code>
+            </pre>
+            <p>
+              Remote code is fetched and cached on first execution, and never
+              updated until the code is run with the
+              <em style="white-space: nowrap;">--reload</em> flag.
+            </p>
+          </section>
+          <section>
+            <h2>nest.land</h2>
+            <iframe
+              src="https://nest.land"
+              frameborder="0"
+              style="width: 1000px; height: 480px;"
+            ></iframe>
+          </section>
+          <section>
+            <h2>Built in tools</h2>
+            <ul>
+              <li>Dependency inspector (<em>'deno info'</em>)</li>
+              <li>Code formatter (<em>'deno fmt'</em>)</li>
+              <li>Testing framework (<em>'deno test'</em>)</li>
+              <li>Linter (<em>'deno lint'</em>)</li>
+            </p>
+          </section>
+          <section>
+            <h2>TypeScript</h2>
+            <p>Typescript compiler build in.</p>
+            <p>Unchanged TS files don't recompile!</p>
+          </section>
+          <section>
+            <h2>Executables</h2>
+            <p>
+              Single executable ( with runtime and modules) with minimal
+              linkage.
+            </p>
+          </section>
+          <section>
+            <h2>Promises</h2>
+            <p>Top level await.</p>
+            <pre>
+              <code data-trim data-noescape class="typescript">
+                import { Application } from "./dependencies.ts";
+
+                const port = 5000;
+                const app = new Application();
+
+                console.log(`Server listening on port ${port}`);
+                await app.listen({ port });
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Error handling</h2>
+            <p>
+              Die immediately on unhandled promises, instead of indefinitely
+              running processes.
+            </p>
+          </section>
+          <section>
+            <h2>Deployment</h2>
+            <img
+              src="./assets/imgs/heroku_buildpack.png"
+              height="400"
+              alt="Heroku custom buildpack"
+            />
+            <small>
+              Similar to node.js-Applications. Needs a custom buildpack on
+              Heroku.
+            </small>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>So what?</h2>
+            <ul>
+              <li>Very pleasant developer experience.</li>
+              <li>
+                Slight performance advantages to Node.js.<br />(in this early
+                stage)
+              </li>
+              <li>Npm modules can still be used.</li>
+              <li>
+                Very fast development of library and third party modules. (You
+                have probably no idea what <em>"unstable"</em> can mean... )
+              </li>
+            </ul>
+            <p><a href="https://deno.land/">https://deno.land/</a></p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

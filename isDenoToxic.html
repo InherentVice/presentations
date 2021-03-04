@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Has Deno a toxic community? - CUdev-WebDev 4. Mar. 2021</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/dist/theme/league.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="reveal.js/plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <style type="text/css" media="screen">
+      .reveal pre {
+        box-shadow: none;
+      }
+      .reveal .controls {
+        color: #345;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section
+            data-markdown
+            data-separator="^\n---\n$"
+            data-separator-vertical="^\n--\n$"
+          >
+            <textarea data-template>
+              <small>CUdev_WebDev, 4. Mar. 2021:</small>
+              <div style="display: flex; justify-content: center; align-items: center">
+                <img src="./assets/imgs/Deno.toxic.png" width=300" height="300" />
+                <div style="display: flex; flex-direction: column;">
+                  <h2 style="margin-bottom:0;">Has Deno a toxic community?</h2>
+                </div>
+              </div>
+              <p>My 2 cents about <a href="https://github.com/denoland/deno_website2/pull/440">https://github.com/denoland/deno_website2/pull/440</a></p>
+            </textarea>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>1. Its a "cultural thing"...</h2>
+            <p>
+              Deno brings some disruptive changes that allow different
+              approaches how we work and how we manage our packages
+            </p>
+          </section>
+          <section>
+            <h3>
+              Its "unstable".
+            </h3>
+            <p>
+              Not only because it could be buggy, but because the "culture" and
+              best practices have to form yet.
+            </p>
+            <p>Discussions like this are a part of it...</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>2. Deno !== deno.land/x</h2>
+            <p>And it doesn't necessarily "need" a NPM equivalent.</p>
+          </section>
+          <section>
+            <ul>
+              <li>
+                deno.land/x is a repository for trusted third party packages.
+              </li>
+              <li>
+                It makes sense to have this, but not every package has to be
+                there.
+              </li>
+              <li>We shouldn't blindly copy the Node/NPM infrastructure.</li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>deno.land/x has rules to prevent duplicate packages with similar
+                names.</li>
+              <li>@ForbesLindesay didn't pay attention to them...</li>
+            </ul>
+          </section>
+          <section>
+            <img src="./assets/imgs/karen_manager.gif" alt="karen" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>3. A missed opportunity...</h2>
+            <img src="assets/imgs/blackjack_hookers.jpg" alt="bender" />
+          </section>
+          <section>
+            <ul>
+              <li>@ForbesLindesay could have used the respect and trust that Pug.js
+                has to establish hosting your package in your own repo.</li>
+              <li>Alternative module registrys are already sprouting.</li>
+            </ul>
+          </section>
+          <section>
+            <section>
+              <h3>A better approach:</h3>
+              <img src="assets/imgs/oscarotero.png" alt="stuff" />
+              <p>and why the heck not?</p>
+            </section>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
